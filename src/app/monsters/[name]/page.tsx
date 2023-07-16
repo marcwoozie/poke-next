@@ -1,7 +1,7 @@
 import { get } from "@/lib/fetch"
 import { MonsterDetail, MonsterDetailSprite } from "@/types/pokemon"
 import { use } from "react"
-import { Metadata, ResolvingMetadata } from 'next'
+import { Metadata } from 'next'
 
 const fetchDetail = async (name: string) => {
   const data = await Promise.all([
