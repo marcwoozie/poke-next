@@ -44,8 +44,7 @@ export const generateMetadata = async (
     params: {
       name: string
     }
-  },
-  parent?: ResolvingMetadata
+  }
 ): Promise<Metadata> => {
   const data = await get<MonsterDetail>(`https://pokeapi.co/api/v2/pokemon-species/${params.name}`, {}, {}, {next: {revalidate: 0}}).then(res => res)
   return {
