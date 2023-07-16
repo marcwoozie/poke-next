@@ -7,7 +7,7 @@ const fetch = () => {
   return get<PokeApiCommonRes<MonsterIndexRes[]>>('https://pokeapi.co/api/v2/pokemon', {limit: 100}, {}, {next: {revalidate: 0}}).then(res => res.results)
 }
 
-const page = () => {
+const Page = () => {
   const monsters = use(fetch())
   return <>
     <TableContainer>
@@ -33,4 +33,4 @@ const page = () => {
   </>
 }
 
-export default page
+export default Page

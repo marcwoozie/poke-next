@@ -1,6 +1,7 @@
 import { get } from "@/lib/fetch"
 import { MonsterDetail, MonsterDetailSprite } from "@/types/pokemon"
 import { use } from "react"
+import { Metadata, ResolvingMetadata } from 'next'
 
 const fetchDetail = async (name: string) => {
   const data = await Promise.all([
@@ -37,3 +38,17 @@ const Page = ({
 }
 
 export default Page
+
+export const generateMetadata = async (
+  { params }: {
+    params: {
+      name: string
+    }
+  },
+  parent?: ResolvingMetadata
+): Promise<Metadata> => {
+  const data = await get<MonsterDetail>(`https://pokeapi.co/api/v2/pokemon-species/${params.name}`, {}, {}, {next: {revalidate: 0}}).then(res => res)
+  return {
+    title: getName(data)
+  }
+}
