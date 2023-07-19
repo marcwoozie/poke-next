@@ -2,6 +2,7 @@ import { get } from "@/lib/fetch"
 import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody } from "@/components/chakra"
 import { use } from "react"
 import { MonsterIndexRes, PokeApiCommonRes } from "@/types/pokemon"
+import { Metadata } from "next"
 
 const fetch = () => {
   return get<PokeApiCommonRes<MonsterIndexRes[]>>('https://pokeapi.co/api/v2/pokemon', {limit: 100}, {}, {next: {revalidate: 0}}).then(res => res.results)
@@ -34,3 +35,7 @@ const Page = () => {
 }
 
 export default Page
+
+export const metadata: Metadata = {
+  title: process.env.APP_NAME
+}
