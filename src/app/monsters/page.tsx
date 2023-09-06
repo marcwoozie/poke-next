@@ -3,6 +3,7 @@ import { TableContainer, Table, TableCaption, Thead, Tr, Th, Tbody } from "@/com
 import { use } from "react"
 import { MonsterIndexRes, PokeApiCommonRes } from "@/types/pokemon"
 import { Metadata } from "next"
+import Link from "next/link"
 
 const fetch = () => {
   return get<PokeApiCommonRes<MonsterIndexRes[]>>('https://pokeapi.co/api/v2/pokemon', {limit: 100}, {}, {next: {revalidate: 0}}).then(res => res.results)
@@ -23,7 +24,7 @@ const Page = () => {
           {monsters.map(monster => {
             return <>
               <Tr>
-                <Th><a href={`/monsters/${monster.name}`}>{monster.name}</a></Th>
+                <Th><Link href={`/monsters/${monster.name}`}>{monster.name}</Link></Th>
               </Tr>
             </>
           })}

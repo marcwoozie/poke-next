@@ -2,6 +2,7 @@ import { get } from "@/lib/fetch"
 import { MonsterDetail, MonsterDetailSprite } from "@/types/pokemon"
 import { use } from "react"
 import { Metadata } from 'next'
+import Link from "next/link"
 
 const fetchDetail = async (name: string) => {
   const data = await Promise.all([
@@ -31,6 +32,7 @@ const Page = ({
   const monsterName = getName(detail)
 
   return <>
+    <Link href={'/monsters'}>戻る</Link>
     <h1>{monsterName}</h1>
     <img src={sprites.sprites.front_default} alt="" />
     <img src={sprites.sprites.front_shiny} alt="" />
