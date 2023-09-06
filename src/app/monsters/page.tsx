@@ -6,7 +6,7 @@ import { Metadata } from "next"
 import Link from "next/link"
 
 const fetch = () => {
-  return get<PokeApiCommonRes<MonsterIndexRes[]>>('https://pokeapi.co/api/v2/pokemon', {limit: 100}, {}, {next: {revalidate: 0}}).then(res => res.results)
+  return get<PokeApiCommonRes<MonsterIndexRes[]>>('https://pokeapi.co/api/v2/pokemon', {limit: 10}, {}, {next: {revalidate: 100}}).then(res => res.results)
 }
 
 const Page = () => {

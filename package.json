@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "env-cmd -f .env.prod next build",
-    "build:stg": "env-cmd -f .env.stg next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
